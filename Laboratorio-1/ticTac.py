@@ -1,4 +1,10 @@
-
+# Sistema de ecuaciones
+# Nava Izquierdo César
+# Candia Navarro Iván
+# Brandon Aldair Diaz Ortiz
+# Flores Estopier Rodrigo
+# Rodriguez Valle Josue Abraham
+# 6CV2
 import random, time
 
 def impTablero(tablero):
