@@ -1,5 +1,6 @@
 from collections import deque
-
+import time
+start_time = time.perf_counter()
 def solve_maze(maze, start, end):
     queue = deque([(start, [start])])
     while queue:
@@ -45,3 +46,7 @@ if __name__ == "__main__":
             print("".join(row))
     else:
         print("No solution found.")
+end_time = time.perf_counter()
+execution_time = (end_time - start_time)*1000
+
+print(f"El tiempo de ejecución fue: {execution_time} milisegundos")
