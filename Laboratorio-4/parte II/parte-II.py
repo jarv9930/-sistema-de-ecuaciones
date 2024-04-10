@@ -54,7 +54,7 @@ print(f"El valor mínimo de la función f1(x) es: {min_f1}")"""
 
 import numpy as np
 import math
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 # Definición de las funciones
 def f1(x):
