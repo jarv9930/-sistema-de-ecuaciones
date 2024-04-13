@@ -31,7 +31,6 @@ def recocido_simulado(funcion, temperatura_inicial, tasa_enfriamiento, temperatu
             
     return x_actual, f_actual, historial
 
-# Parámetros de la simulación
 temperatura_inicial = 10000
 tasa_enfriamiento = 0.99
 temperatura_final = 1e-8
