@@ -1,50 +1,61 @@
-import random
+import numpy as np
 import math
-import time
+import matplotlib.pyplot as plt
 
-def f(x):
-    return x**4 + (3*x)**3 + 2*x**2 - 1 #x**4 - (2*x)**3 - 8 
+def f1(x):
+    return x**4 + (3*x)**3 + 2*x**2 - 1
+
+def f2(x):
+    return x**4 - (2*x)**3 - 8
+
+def simulated_annealing(func, initial_temp, cooling_rate, stopping_temp, max_iterations):
+
+    current_x = np.random.uniform(-10, 10)
+    current_f = func(current_x)
+    current_temp = initial_temp
+    history = [(current_x, current_f)]
+    
+    for i in range(max_iterations):
+        next_x = current_x + np.random.normal()
+        next_f = func(next_x)
+
+        energy_diff = next_f - current_f
+        
+        if energy_diff < 0 or np.random.uniform() < math.exp(-energy_diff / current_temp):
+            current_x, current_f = next_x, next_f
+            history.append((current_x, current_f))
+        
+        current_temp *= cooling_rate
+        
+        if current_temp < stopping_temp:
+            break
             
+    return current_x, current_f, history
+
+initial_temp = 10000
+cooling_rate = 0.99
+stopping_temp = 1e-8
+max_iterations = 1000
+
+min_x1, min_f1, history1 = simulated_annealing(f1, initial_temp, cooling_rate, stopping_temp, max_iterations)
+
+min_x2, min_f2, history2 = simulated_annealing(f2, initial_temp, cooling_rate, stopping_temp, max_iterations)
+
+def plot_function(f, min_x, min_f, title, label):
+    x = np.linspace(-10, 10, 400)
+    y = f(x)
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(x, y, label=label)
+    plt.scatter(min_x, min_f, color='red', zorder=5, label=f'Mínimo encontrado: x={min_x:.2f}, f(x)={min_f:.2f}')
+    plt.title(title)
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
 
-def random_range(a, b):
-    return a + (b - a) * random.random()
+plot_function(f1, min_x1, min_f1, 'Gráfico de la Función f1(x)', 'f1(x)')
 
-def simulated_annealing():
-    T_inicial = 1000.0
-    T_final = 0.1
-    alfa = 0.95
-    num_iteraciones = 10000
-    
-    x_actual = random_range(-10.0, 10.0)
-    f_actual = f(x_actual)
-    
-    mejor_x = x_actual
-    mejor_f = f_actual
-    
-    T = T_inicial
-    
-    while T > T_final:
-        for i in range(num_iteraciones):
-            x_vecino = x_actual + random_range(-0.1, 0.1)
-            f_vecino = f(x_vecino)
-            
-            delta_E = f_vecino - f_actual
-            
-            if delta_E < 0 or random.random() < math.exp(-delta_E / T):
-                x_actual = x_vecino
-                f_actual = f_vecino
-                
-                if f_actual < mejor_f:
-                    mejor_x = x_actual
-                    mejor_f = f_actual
-                    
-        T *= alfa
-    
-    print(f"Minimo valor de f(x) encontrado: {mejor_f} en x = {mejor_x}")
-
-# Inicializa el generador de números aleatorios
-random.seed(time.time())
-
-# Ejecuta el algoritmo
-simulated_annealing()
+plot_function(f2, min_x2, min_f2, 'Gráfico de la Función f2(x)', 'f2(x)')
