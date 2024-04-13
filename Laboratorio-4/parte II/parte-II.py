@@ -3,7 +3,8 @@ import math
 import time
 
 def f(x):
-    return x**4 + (3*x)**3 + 2*x**2 - 1 #x**4 - (2*x)**3 - 8
+    return x**4 + (3*x)**3 + 2*x**2 - 1 #x**4 - (2*x)**3 - 8 
+            
 
 
 def random_range(a, b):
