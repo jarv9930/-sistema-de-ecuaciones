@@ -1,3 +1,10 @@
+# 8 Puzzle
+# Nava Izquierdo César
+# Candia Navarro Iván
+# Brandon Aldair Diaz Ortiz
+# Flores Estopier Rodrigo
+# Rodriguez Valle Josue Abraham
+# 6CV2
 from queue import PriorityQueue
 
 

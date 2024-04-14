@@ -1,3 +1,10 @@
+# Recocido simulado
+# Nava Izquierdo César
+# Candia Navarro Iván
+# Brandon Aldair Diaz Ortiz
+# Flores Estopier Rodrigo
+# Rodriguez Valle Josue Abraham
+# 6CV2
 import numpy as np
 import math
 import matplotlib.pyplot as plt
