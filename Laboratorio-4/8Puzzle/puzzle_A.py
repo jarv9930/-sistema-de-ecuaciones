@@ -3,94 +3,115 @@ from queue import PriorityQueue
 
 
 # Funcion heuristica (distancia de Manhattan)
+#Una heurística admisible y consistente ,
+# que calcula la suma de las distancias que separa cada ficha de su posición objetivo.
 def heuristica(estado):
     distancia = 0
     for i in range(3):
         for j in range(3):
             if estado[i][j] != 0:
+
                 fila_objetivo = (estado[i][j] - 1) // 3
                 columna_objetivo = (estado[i][j] - 1) % 3
                 distancia += abs(i - fila_objetivo) + abs(j - columna_objetivo)
+    print("distancia")
+    print(distancia)
     return distancia
 
 # Algoritmo de busqueda A*
-def resolver_puzzle(initial_state, goal_state):
+def resolver_puzzle(estado_inicial, estado_objetivo):
     # Se define la cola de prioridad
-    queue = PriorityQueue()
-    queue.put((0, initial_state))
+    cola = PriorityQueue()
+    cola.put((0, estado_inicial))
 
     
     # Se define la lista de visitados
-    visited = set()
+    visitados = set()
     
     # Se define la lista de padres
-    parent = {}
+    padres = {}
     
     # Se define la lista de costos cada estado
-    tupla = tuple(map(tuple, initial_state))
+    tupla = tuple(map(tuple, estado_inicial))
     cost = {}
     cost[tupla] = 0
 
     
     
-    while not queue.empty():
+    while not cola.empty():
         # Obtener el estado con el menor coste
-        current_cost, nodo_actual = queue.get()
-        tupla_current = tuple(map(tuple, nodo_actual))
+        costo_actual, nodo_actual = cola.get()
+        tupla_actual = tuple(map(tuple, nodo_actual))
+        print("nodo_actual")
+        print(nodo_actual)
+        print("costo_actual")
+        print(costo_actual)
         
         # Comprobar si el estado actual es el estado objetivo
-        if nodo_actual == goal_state:
+        if nodo_actual == estado_objetivo:
             break
         
         # Agregar el estado actual a la lista de visitados
-        visited.add(tuple(map(tuple, nodo_actual)))
+        visitados.add(tuple(map(tuple, nodo_actual)))
         
         # Generar los posibles movimientos
-        moves = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-        for move in moves:
-            new_state = list(map(list, nodo_actual))
-            zero_row, zero_col = 0, 0
+        # Movimientos: izquierda, derecha, arriba, abajo
+        movimientos = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        for movimiento in movimientos:
+            nuevo_estado = list(map(list, nodo_actual))
+            fila_cero, columna_cero = 0, 0
+            
+            # Encontrar la posicion del cero del estado actual. fila y columna
             for i in range(3):
                 for j in range(3):
-                    if new_state[i][j] == 0:
-                        zero_row, zero_col = i, j
+                    if nuevo_estado[i][j] == 0:
+                        fila_cero, columna_cero = i, j
                         break
-            
-            new_row = zero_row + move[0]
-            new_col = zero_col + move[1]
-            
-            if 0 <= new_row < 3 and 0 <= new_col < 3:
-                new_state[zero_row][zero_col], new_state[new_row][new_col] = new_state[new_row][new_col], new_state[zero_row][zero_col]
-                new_state_tuple = tuple(map(tuple, new_state))
-                
-                if new_state_tuple not in visited:
                     
-                    cost[tupla_current] = current_cost + 1
-                    priority = current_cost + 1 + heuristica(new_state)
-                    queue.put((priority, new_state))
-                    visited.add(new_state_tuple)
-                    parent[new_state_tuple] = tupla_current
+            
+            # Definimos la posicion del cero en la nueva fila y columna
+            nueva_fila = fila_cero + movimiento[0]
+            nueva_columna = columna_cero + movimiento[1]
+            
+            # Comprobar si el movimiento es valido, es decir, si la nueva fila y columna estan dentro del rango de 0 a 2
+            if 0 <= nueva_fila < 3 and 0 <= nueva_columna < 3:
+                #Generar el nuevo estado con el movimiento
+                nuevo_estado[fila_cero][columna_cero], nuevo_estado[nueva_fila][nueva_columna] = nuevo_estado[nueva_fila][nueva_columna], nuevo_estado[fila_cero][columna_cero]
+                print("nuevo_estado")
+                print(nuevo_estado)
+                tupla_nuevo_estado = tuple(map(tuple, nuevo_estado))
+                
+                if tupla_nuevo_estado not in visitados:
+                    
+                    cost[tupla_actual] = costo_actual + 1
+                    
+                    #calcular la prioridad del nuevo estado
+                    prioridad = costo_actual + 1 + heuristica(nuevo_estado)
+                    cola.put((prioridad, nuevo_estado))
+                    visitados.add(tupla_nuevo_estado)
+                    padres[tupla_nuevo_estado] = tupla_actual
     
     # Reconstruir el camino
-    path = []
-    tupla_current = tuple(map(tuple, goal_state))
-    #print(tupla_current)
-    while tupla_current != tuple(map(tuple, initial_state)):
-        #print(tupla_current)
-        path.append(tupla_current)
-        tupla_current = parent[tupla_current]
-    path.append(tuple(map(tuple, initial_state)))
-    path.reverse()
+    movimientos_realizados = []
+    tupla_actual = tuple(map(tuple, estado_objetivo))
+    #print(tupla_actual)
+    while tupla_actual != tuple(map(tuple, estado_inicial)):
+        #print(tupla_actual)
+        movimientos_realizados.append(tupla_actual)
+        tupla_actual = padres[tupla_actual]
+    movimientos_realizados.append(tuple(map(tuple, estado_inicial)))
+    movimientos_realizados.reverse()
     
-    return path
+    return movimientos_realizados
 
 # Definimos el estado inicial y el estado objetivo
-goal_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-initial_state = [[1, 5, 3], [8, 2, 6], [0, 7, 4]]
+estado_objetivo = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+estado_inicial = [[1, 5, 3], [8, 2, 6], [0, 7, 4]]
 
-path = resolver_puzzle(initial_state,goal_state)
-for state in path:
-    print("Paso", path.index(state))
-    for row in state:
-        print(row)
+#Resolvemos el puzzle e imprimimos los pasos realizados para encontrar la solucion
+movimientos_realizados = resolver_puzzle(estado_inicial,estado_objetivo)
+for estado in movimientos_realizados:
+    print("Paso", movimientos_realizados.index(estado))
+    for fila in estado:
+        print(fila)
 print()
