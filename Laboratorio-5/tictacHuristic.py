@@ -86,9 +86,10 @@ def jugarvsComputadora():
             if puntuacion == -1:
                 print('¡Si juegas de forma perfecta ganaras!')
             elif puntuacion == 1:
-                print('¡Si la computador juega de manera perfecta ganará!')
+                print('¡Si la computadora juega de manera perfecta ganará!')
             else:
                 print('!Si ambos juegan de forma perfecta el juego quedara en un empate!')
+
         eleccion = int(input('Ingrese la posición (0-8): '))
         
         if eleccion in posicionesOcupadas:
@@ -116,6 +117,15 @@ def jugarvsComputadora():
         turno += 1
         
         print(f'Turno {turno} de la computadora')
+        if turno > 1:
+            puntuacion = minimax(tablero, 10-turno, True)
+            print(f'Puntuación: {puntuacion}')
+            if puntuacion == -1:
+                print('¡Si juegas de forma perfecta ganaras!')
+            elif puntuacion == 1:
+                print('¡Si la computadora juega de manera perfecta ganará!')
+            else:
+                print('!Si ambos juegan de forma perfecta el juego quedara en un empate!')
         time.sleep(2)
         # Turno de la computadora
         eleccion = random.choice(posicionesDisponibles)
@@ -147,6 +157,15 @@ def computadoraVsComputadora():
         
         # Turno de la computadora 1
         print(f'Turno {turno} de la computadora 1')
+        if turno > 1:
+            puntuacion = minimax(tablero, 10-turno, False)
+            print(f'Puntuación: {puntuacion}')
+            if puntuacion == -1:
+                print('¡Si la computadora 1 juega de forma perfecta ganara!')
+            elif puntuacion == 1:
+                print('¡Si la computadora 2 juega de manera perfecta ganará!')
+            else:
+                print('!Si ambos juegan de forma perfecta el juego quedara en un empate!')
         time.sleep(2)
         eleccion = random.choice(posicionesDisponibles)
         posicionesOcupadas.append(eleccion)
@@ -165,7 +184,16 @@ def computadoraVsComputadora():
           
         # Turno de la computadora 2
         print(f'Turno {turno} de la computadora 2')
-        #time.sleep(2)
+        if turno > 1:
+            puntuacion = minimax(tablero, 10-turno, True)
+            print(f'Puntuación: {puntuacion}')
+            if puntuacion == -1:
+                print('¡Si la computadora 1 juega de forma perfecta ganara!')
+            elif puntuacion == 1:
+                print('¡Si la computadora 2 juega de manera perfecta ganará!')
+            else:
+                print('!Si ambos juegan de forma perfecta el juego quedara en un empate!')
+        time.sleep(2)
         eleccion = random.choice(posicionesDisponibles)
         posicionesOcupadas.append(eleccion)
         posicionesDisponibles.remove(eleccion)
