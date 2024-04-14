@@ -10,9 +10,10 @@ def heuristica(estado):
     for i in range(3):
         for j in range(3):
             if estado[i][j] != 0:
-
+                #Se calcula la posicion en la que deberia estar el numero    
                 fila_objetivo = (estado[i][j] - 1) // 3
                 columna_objetivo = (estado[i][j] - 1) % 3
+                #Se calcula la diferencia entre la posicion actual y la posicion objetivo
                 distancia += abs(i - fila_objetivo) + abs(j - columna_objetivo)
     print("distancia")
     print(distancia)
