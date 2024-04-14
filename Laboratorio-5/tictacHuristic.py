@@ -39,6 +39,7 @@ def hay_ganador(tablero):
 
     return False     
 
+#Algoritmo Minimax donde el jugador humano es el minimizador y la computadora es el maximizador
 def minimax(tablero, profundidad, esMaximizador):
     if hay_ganador(tablero):
         return -1 if esMaximizador else 1
@@ -48,18 +49,24 @@ def minimax(tablero, profundidad, esMaximizador):
         mejor = -1000
         for i in range(3):
             for j in range(3):
+                # Verificar si la celda esta vacia y si es asi se coloca la ficha de la computadora
                 if tablero[i][j] == '   ':
                     tablero[i][j] = " O "
+                    # Se llama recursivamente minimax para el jugador humano
                     mejor = max(mejor, minimax(tablero, profundidad-1, not esMaximizador))
+                    # Se deshace el movimiento
                     tablero[i][j] = '   '
         return mejor
     else:
         mejor = 1000
         for i in range(3):
             for j in range(3):
+                # Verificar si la celda esta vacia y si es asi se coloca la ficha del jugador humano
                 if tablero[i][j] == '   ':
                     tablero[i][j] = " X "
+                    # Se llama recursivamente minimax para la computadora
                     mejor = min(mejor, minimax(tablero, profundidad-1, not esMaximizador))
+                    # Se deshace el movimiento
                     tablero[i][j] = '   '
         return mejor   
 
@@ -67,8 +74,6 @@ def jugarvsComputadora():
     tablero = crearNuevoTablero()
     turno = 1
 
-    
-            
     posicionesDisponibles = list(range(9))
     posicionesOcupadas = []
     impTablero(tablero)
@@ -97,7 +102,7 @@ def jugarvsComputadora():
             
             continue
         else:
-            if eleccion   not in posicionesDisponibles:
+            if eleccion not in posicionesDisponibles:
                 print('Elige una posición válida.') 
                 continue
             posicionesOcupadas.append(eleccion)
