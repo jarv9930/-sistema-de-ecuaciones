@@ -14,7 +14,6 @@ def impTablero(tablero):
         print("")
         print("-"*14)
     
-        
 def crearNuevoTablero():
     tablero = [["   " for _ in range(3)] for _ in range(3)]
     return tablero
@@ -39,43 +38,60 @@ def hay_ganador(tablero):
 
     return False     
 
-#Algoritmo Minimax donde el jugador humano es el minimizador y la computadora es el maximizador
-def minimax(tablero, profundidad, esMaximizador):
+def minimax(tablero, profundidad, esMaximizador, alfa, beta, movimientos):
     if hay_ganador(tablero):
-        return -1 if esMaximizador else 1
+        return (-1 if esMaximizador else 1, tablero)
     if profundidad == 0:
-        return 0
+        return (0, tablero)
+    
     if esMaximizador:
-        mejor = -1000
+        mejor = -float('inf')
+        mejor_tablero = None
         for i in range(3):
             for j in range(3):
                 # Verificar si la celda esta vacia y si es asi se coloca la ficha de la computadora
                 if tablero[i][j] == '   ':
                     tablero[i][j] = " O "
-                    # Se llama recursivamente minimax para el jugador humano
-                    mejor = max(mejor, minimax(tablero, profundidad-1, not esMaximizador))
-                    # Se deshace el movimiento
+                    valor, _ = minimax(tablero, profundidad-1, not esMaximizador, alfa, beta, movimientos)
                     tablero[i][j] = '   '
-        return mejor
+                    if valor > mejor:
+                        mejor = valor
+                        mejor_tablero = [row[:] for row in tablero]
+                    alfa = max(alfa, mejor)
+                    if beta <= alfa:
+                        break
+            if beta <= alfa:
+                break
+        movimientos[tuple(map(tuple, mejor_tablero))] = mejor
+        return (mejor, mejor_tablero)
     else:
-        mejor = 1000
+        mejor = float('inf')
+        mejor_tablero = None
         for i in range(3):
             for j in range(3):
                 # Verificar si la celda esta vacia y si es asi se coloca la ficha del jugador humano
                 if tablero[i][j] == '   ':
                     tablero[i][j] = " X "
-                    # Se llama recursivamente minimax para la computadora
-                    mejor = min(mejor, minimax(tablero, profundidad-1, not esMaximizador))
-                    # Se deshace el movimiento
+                    valor, _ = minimax(tablero, profundidad-1, not esMaximizador, alfa, beta, movimientos)
                     tablero[i][j] = '   '
-        return mejor   
+                    if valor < mejor:
+                        mejor = valor
+                        mejor_tablero = [row[:] for row in tablero]
+                    beta = min(beta, mejor)
+                    if beta <= alfa:
+                        break
+            if beta <= alfa:
+                break
+        movimientos[tuple(map(tuple, mejor_tablero))] = mejor
+        return (mejor, mejor_tablero)
+
 
 def jugarvsComputadora():
     tablero = crearNuevoTablero()
     turno = 1
-
     posicionesDisponibles = list(range(9))
     posicionesOcupadas = []
+    movimientos = {}  # Diccionario para almacenar movimientos
     impTablero(tablero)
     print("Jugador 1: X")
     print("Computadora: O")
@@ -86,7 +102,7 @@ def jugarvsComputadora():
         # Turno del jugador
         print(f'Turno {turno} del jugador humano')
         if turno > 1:
-            puntuacion = minimax(tablero, 10-turno, False)
+            puntuacion, _ = minimax(tablero, 10-turno, False, -float('inf'), float('inf'), movimientos)
             print(f'Puntuación: {puntuacion}')
             if puntuacion == -1:
                 print('¡Si juegas de forma perfecta ganaras!')
@@ -99,7 +115,6 @@ def jugarvsComputadora():
         
         if eleccion in posicionesOcupadas:
             print('Esta posicion ya esta ocupada. Elige otra.')
-            
             continue
         else:
             if eleccion not in posicionesDisponibles:
@@ -123,7 +138,7 @@ def jugarvsComputadora():
         
         print(f'Turno {turno} de la computadora')
         if turno > 1:
-            puntuacion = minimax(tablero, 10-turno, True)
+            puntuacion, _ = minimax(tablero, 10-turno, True, -float('inf'), float('inf'), movimientos)
             print(f'Puntuación: {puntuacion}')
             if puntuacion == -1:
                 print('¡Si juegas de forma perfecta ganaras!')
@@ -153,30 +168,34 @@ def computadoraVsComputadora():
     turno = 1
     posicionesDisponibles = list(range(9))
     posicionesOcupadas = []
+    movimientos = {}  # Diccionario para almacenar movimientos
     impTablero(tablero)
     print("Computadora 1: X")
     print("Computadora 2: O")
     print("Computadora 1 comienza")
+    
     while True:
         print('*'*20)
         
         # Turno de la computadora 1
         print(f'Turno {turno} de la computadora 1')
         if turno > 1:
-            puntuacion = minimax(tablero, 10-turno, False)
+            puntuacion, _ = minimax(tablero, 10-turno, False, -float('inf'), float('inf'), movimientos)
             print(f'Puntuación: {puntuacion}')
             if puntuacion == -1:
-                print('¡Si la computadora 1 juega de forma perfecta ganara!')
+                print('¡Si la computadora 1 juega de forma perfecta ganará!')
             elif puntuacion == 1:
                 print('¡Si la computadora 2 juega de manera perfecta ganará!')
             else:
-                print('!Si ambos juegan de forma perfecta el juego quedara en un empate!')
+                print('¡Si ambos juegan de forma perfecta el juego quedará en un empate!')
         time.sleep(2)
+        
         eleccion = random.choice(posicionesDisponibles)
         posicionesOcupadas.append(eleccion)
         posicionesDisponibles.remove(eleccion)
         tablero[eleccion//3][eleccion%3] = " X "
         impTablero(tablero)
+        
         # Verificar si hay un ganador
         if hay_ganador(tablero):
             print(f'¡La computadora 1 "X" ha ganado en el turno {turno}!')
@@ -185,25 +204,28 @@ def computadoraVsComputadora():
         if turno == 9:
             print('¡Empate!')
             break
+        
         turno += 1
-          
+        
         # Turno de la computadora 2
         print(f'Turno {turno} de la computadora 2')
         if turno > 1:
-            puntuacion = minimax(tablero, 10-turno, True)
+            puntuacion, _ = minimax(tablero, 10-turno, True, -float('inf'), float('inf'), movimientos)
             print(f'Puntuación: {puntuacion}')
             if puntuacion == -1:
-                print('¡Si la computadora 1 juega de forma perfecta ganara!')
+                print('¡Si la computadora 1 juega de forma perfecta ganará!')
             elif puntuacion == 1:
                 print('¡Si la computadora 2 juega de manera perfecta ganará!')
             else:
-                print('!Si ambos juegan de forma perfecta el juego quedara en un empate!')
+                print('¡Si ambos juegan de forma perfecta el juego quedará en un empate!')
         time.sleep(2)
+        
         eleccion = random.choice(posicionesDisponibles)
         posicionesOcupadas.append(eleccion)
         posicionesDisponibles.remove(eleccion)
         tablero[eleccion//3][eleccion%3] = " O "
         impTablero(tablero)
+        
         # Verificar si hay un ganador
         if hay_ganador(tablero):
             print(f'¡La computadora 2 "O" ha ganado en el turno {turno}!')
@@ -212,7 +234,7 @@ def computadoraVsComputadora():
         if turno == 9:
             print('¡Empate!')
             break
-        turno += 1 
+        turno += 1
         
 def menu():
     print("*********Tic Tac Toe*********")
