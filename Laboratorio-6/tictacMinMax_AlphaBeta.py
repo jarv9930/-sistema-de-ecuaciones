@@ -42,18 +42,18 @@ def hay_ganador(tablero):
 
     return None 
 
-def verificarGanador(tablero):
+def verificarGanador(tablero,profundidad):
     ganador = hay_ganador(tablero)
     if ganador == " X ":
-        return -1
+        return (-1-profundidad)
     elif ganador == " O ":
-        return 1
+        return (1+profundidad)
     else:
         return 0
 
 def alphaBeta(tablero, profundidad, alfa, beta, esMaximizador):
     if hay_ganador(tablero) is not None or profundidad == 0:
-        return verificarGanador(tablero)
+        return verificarGanador(tablero,profundidad)
     
     if esMaximizador:
         max_val = -1000
