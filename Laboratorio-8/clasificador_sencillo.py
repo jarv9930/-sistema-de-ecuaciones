@@ -67,7 +67,7 @@ contIrisVirginica = 0
 
 contadorCorrectos = 0
 for i in range(len(df2)):
-    if df2.iloc[i, 0] < (mediaSetosaL +desviacionSetosaL):
+    if df2.iloc[i, 0] < (mediaSetosaL + desviacionSetosaL):
         contIrisSetosa+=1
         #Comprobar si el clasificador es correcto comparando las categorias
         if df2.iloc[i, 2] == "Iris-setosa":
@@ -91,10 +91,10 @@ print("Cantidad de Iris-versicolor: ", contIrisVersicolor)
 print("Cantidad de Iris-virginica: ", contIrisVirginica)
 
 #Calculamos la efeciencia del clasificador dividiendo el numero de acietos con el total de muestras
-eficiencia = (contadorCorrectos / len(df2)) * 100
+accuracy = (contadorCorrectos / len(df2)) * 100
 
 print("El clasificador acerto en ", contadorCorrectos, " muestras de ", len(df2))
-print("Precision del clasificador por longitud de petalo: ", eficiencia, "%")
+print("Accuracy del clasificador por longitud de petalo: ", accuracy, "%")
 
 #Clasificar los valores de archivo text considerando los resulados de la media de los valores de ancho de petalo
 print("------------CLASIFICACION POR ANCHO DE PETALO-----------------")
@@ -127,8 +127,8 @@ print("Cantidad de Iris-versicolor: ", contIrisVersicolor)
 print("Cantidad de Iris-virginica: ", contIrisVirginica)
 
 #Calculamos la efeciencia del clasificador dividiendo el numero de acietos con el total de muestras
-eficiencia = (contadorCorrectos / len(df2)) * 100
+accuracy = (contadorCorrectos / len(df2)) * 100
 
 
 print("El clasificador acerto en ", contadorCorrectos, " muestras de ", len(df2))
-print("Precision del clasificador por ancho de petalo: ", eficiencia, "%")
+print("Accuracy del clasificador por ancho de petalo: ", accuracy, "%")
