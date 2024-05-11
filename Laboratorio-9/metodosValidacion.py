@@ -1,5 +1,11 @@
 import numpy as np
 import pandas as pd
+class colors:
+    RESET = '\033[0m'
+    BOLDRED = '\033[1;31m'
+    BOLDGREEN = '\033[1;32m'
+    BOLDYELLOW = '\033[1;33m'
+    BOLDBLUE = '\033[1;34m'
 
 # Funcion para Hold Out 70/30 estratificado
 def hold_out_70_30_estratificado(X, y):
@@ -156,16 +162,13 @@ def aplicar_k_fold_estratificado(dataset,carpeta,class_column=-1,n_folds=10):
                 dataset_train = pd.DataFrame(X_train,columns=dataset.columns[:-1])
                 dataset_train[dataset.columns[-1]] = y_train
                 #Guardar DataFrame de conjuntos de entrenamiento en archivo CSV
-                dataset_train.to_csv(carpeta+"fold_"+str(i)+".csv", index=False)
+                dataset_train.to_csv(carpeta+"fold_E"+str(i)+".csv", index=False)
 
-                #Abrir el archivo CSV y añadir los conjuntos de prueba
-                with open(carpeta+"fold_"+str(i)+".csv", 'a') as f:
-                    f.write("Conjuntos de prueba\n")
-                    #Crear DataFrame con los conjuntos de prueba, obteniendo las columnas del dataset original
-                    dataset_test = pd.DataFrame(X_test,columns=dataset.columns[:-1])
-                    dataset_test[dataset.columns[-1]] = y_test
-                    #Guardar DataFrame de conjuntos de prueba en archivo CSV
-                    dataset_test.to_csv(f, index=False,lineterminator='\n')
+                #Crear DataFrame con los conjuntos de prueba, obteniendo las columnas del dataset original
+                dataset_test = pd.DataFrame(X_test,columns=dataset.columns[:-1])
+                dataset_test[dataset.columns[-1]] = y_test
+                #Guardar DataFrame de conjuntos de prueba en archivo CSV
+                dataset_test.to_csv(carpeta+"fold_P"+str(i)+".csv", index=False)
                 
             else:
                 #Si la clase está especificada, se toman todas las columnas menos la de la clase
@@ -174,33 +177,144 @@ def aplicar_k_fold_estratificado(dataset,carpeta,class_column=-1,n_folds=10):
                 dataset_train = pd.DataFrame(X_train,columns=columnas)
                 dataset_train[class_column] = y_train
                 #Guardar DataFrame de conjuntos de entrenamiento en archivo CSV
-                dataset_train.to_csv(carpeta+"fold_"+str(i)+".csv", index=False)
+                dataset_train.to_csv(carpeta+"fold_E"+str(i)+".csv", index=False)
 
-                #Abrir el archivo CSV y añadir los conjuntos de prueba
-                with open(carpeta+"fold_"+str(i)+".csv", 'a') as f:
-                    f.write("Conjuntos de prueba\n")
-                    #Crear DataFrame con los conjuntos de prueba, obteniendo las columnas del dataset original
-                    dataset_test = pd.DataFrame(X_test,columns=columnas)
-                    dataset_test[class_column] = y_test
-                    #Guardar DataFrame de conjuntos de prueba en archivo CSV
-                    dataset_test.to_csv(f, index=False,lineterminator='\n')
+                #Crear DataFrame con los conjuntos de prueba, obteniendo las columnas del dataset original
+                dataset_test = pd.DataFrame(X_test,columns=columnas)
+                dataset_test[class_column] = y_test
+                #Guardar DataFrame de conjuntos de prueba en archivo CSV
+                dataset_test.to_csv(carpeta+"fold_P"+str(i)+".csv", index=False)
 
 
                 
-       
+def comprobarProporcionalidadHoldOut(carpeta,archivoOriginal,target):
+    #Cargar conjuntos de entrenamiento y prueba, y el dataset original
+    original = pd.read_csv(carpeta+archivoOriginal)
+    entrenamiento = pd.read_csv(carpeta+"entrenamiento.csv")
+    prueba = pd.read_csv(carpeta+"prueba.csv")
+    #Obtener el total de elementos en el dataset original,en el de entrenamiento y en el de prueba
+    total = len(original)
+    total_entrenamiento = len(entrenamiento)
+    total_prueba = len(prueba)
+    #Obtener cuantas clases hay en el dataset original
+    clases_original = original[target].values
+    #Contar cuantos elementos hay de cada clase en el dataset original
+    unique_classes = np.unique(clases_original)
+    for cls in unique_classes:
+        print(colors.BOLDYELLOW,"----------------Clase: ", cls, "----------------",colors.RESET)
+        count = np.count_nonzero(clases_original == cls)
+        print("Cantidad de elementos de la clase ", cls, " en el dataset original: ", count)
+        porcentaje = (count/total)*100
+        print("Porcentaje de elementos de la clase ", cls, " en el dataset original: ", porcentaje, "%\n")
+        #Obtener cuantas clases hay en el conjunto de entrenamiento
+        clases_entrenamiento = (entrenamiento[target]==cls).sum()
+        print(colors.BOLDGREEN,"Cantidad de elementos de la clase ", cls, " en el conjunto de entrenamiento: ", clases_entrenamiento)
+        
+        #Calcular el porcentaje de elementos de la clase actual en el conjunto de entrenamiento
+        porcentaje = (clases_entrenamiento/total_entrenamiento)*100
+        print("Porcentaje de elementos de la clase ", cls, " en el conjunto de entrenamiento: ", porcentaje, "%\n",colors.RESET)
+        
+        #Obtener cuantas clases hay en el conjunto de prueba
+        clases_prueba = (prueba[target]==cls).sum()
+        print(colors.BOLDBLUE,"Cantidad de elementos de la clase ", cls, " en el conjunto de prueba: ", clases_prueba)
+
+        #Calcular el porcentaje de elementos de la clase actual en el conjunto de prueba
+        porcentaje = (clases_prueba/total_prueba)*100
+        print("Porcentaje de elementos de la clase ", cls, " en el conjunto de prueba: ", porcentaje, "%",colors.RESET)
+
+def comprobarProporcionalidadKfold(carpeta,archivoOriginal,target,n_folds=10):
+    #Cargar el dataset original
+    original = pd.read_csv(carpeta+archivoOriginal)
+    #Obtener el total de elementos en el dataset original
+    total = len(original)
+
+    #Para cada fold, comprobar la proporcionalidad de las clases
+    for i in range(n_folds):
+        print(colors.BOLDYELLOW,"*****************Fold: ", i, "***************",colors.RESET)
+        #Cargar el fold actual
+        foldEntrenamieto = pd.read_csv(carpeta+"fold_E"+str(i)+".csv")
+        foldPrueba = pd.read_csv(carpeta+"fold_P"+str(i)+".csv")
+
+        #Obtener el total de elementos de entrenamiento en el fold actual
+        total_fold_entrenamiento = len(foldEntrenamieto)
+        #Obtener el total de elementos de prueba en el fold actual
+        total_fold_prueba = len(foldPrueba)
+
+        #Obtener cuantas clases hay en el dataset original
+        clases_original = original[target].values
+        #Contar cuantos elementos hay de cada clase en el dataset original
+        unique_classes = np.unique(clases_original)
+        for cls in unique_classes:
+            print(colors.BOLDYELLOW,"----------------Clase: ", cls, "----------------",colors.RESET)
+            count = np.count_nonzero(clases_original == cls)
+            print("Cantidad de elementos de la clase ", cls, " en el dataset original: ", count)
+            porcentaje = (count/total)*100
+            print("Porcentaje de elementos de la clase ", cls, " en el dataset original: ", porcentaje, "%\n")
+
+            #Obtener cuantas clases hay en el conjunto de entrenamiento
+            clases_entrenamiento = (foldEntrenamieto[target]==cls).sum()
+            print(colors.BOLDGREEN,"Cantidad de elementos de la clase ", cls, " en el conjunto de entrenamiento: ", clases_entrenamiento)
+            porcentaje = (clases_entrenamiento/total_fold_entrenamiento)*100
+            print("Porcentaje de elementos de la clase ", cls, " en el conjunto de entrenamiento: ", porcentaje, "%\n",colors.RESET)
+
+            #Obtener cuantas clases hay en el conjunto de prueba
+            clases_prueba = (foldPrueba[target]==cls).sum()
+            print(colors.BOLDBLUE,"Cantidad de elementos de la clase ", cls, " en el conjunto de prueba: ", clases_prueba)
+            porcentaje = (clases_prueba/total_fold_prueba)*100
+            print("Porcentaje de elementos de la clase ", cls, " en el conjunto de prueba: ", porcentaje, "%",colors.RESET)
 
 
-# Cargar conjuntos de datos
-iris = pd.read_csv("./Laboratorio-9/irisDatasets/iris.csv")
-wine = pd.read_csv("./Laboratorio-9/wineDatasets/wine.csv")
-cars = pd.read_csv("./Laboratorio-9/carsDatasets/cars.csv")
+def printMenu():
+    print(colors.BOLDBLUE,"1. Conjunto de datos Iris Hold Out 70/30")
+    print("2. Conjunto de datos Wine Hold Out 70/30")
+    print("3. Conjunto de datos Cars Hold Out 70/30")
+    print("4. Conjunto de datos Iris K-Fold")
+    print("5. Conjunto de datos Wine K-Fold")
+    print("6. Conjunto de datos Cars K-Fold",colors.RESET)    
 
-aplicar_hold_out_70_30_estratificado(iris,"./Laboratorio-9/irisDatasets/")
-aplicar_hold_out_70_30_estratificado(wine,"./Laboratorio-9/wineDatasets/","Wine")
-aplicar_hold_out_70_30_estratificado(cars,"./Laboratorio-9/carsDatasets/")
+def menu():
+    # Do while para imprimir el menú
+    while(True): 
+        printMenu() 
+        opcion = input("Seleccione una opción: ")
+        if opcion == "0":
+            break
+        if opcion == "1":
+            iris = pd.read_csv("./Laboratorio-9/irisDatasets/iris.csv")
+            print(colors.BOLDRED,"//////////////////Conjunto de datos Iris Hold Out 70/30: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
+            aplicar_hold_out_70_30_estratificado(iris,"./Laboratorio-9/irisDatasets/")
+            comprobarProporcionalidadHoldOut("./Laboratorio-9/irisDatasets/",archivoOriginal="iris.csv",target="variety")
+        elif opcion == "2":
+            wine = wine = pd.read_csv("./Laboratorio-9/wineDatasets/wine.csv")
+            print(colors.BOLDRED,"//////////////////Conjunto de datos Wine Hold Out 70/30: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
+            aplicar_hold_out_70_30_estratificado(wine,"./Laboratorio-9/wineDatasets/","Wine")
+            comprobarProporcionalidadHoldOut("./Laboratorio-9/wineDatasets/",archivoOriginal="wine.csv",target="Wine")
+        elif opcion == "3":
+            cars = pd.read_csv("./Laboratorio-9/carsDatasets/cars.csv")
+            print(colors.BOLDRED,"//////////////////Conjunto de datos Cars Hold Out 70/30: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
+            aplicar_hold_out_70_30_estratificado(cars,"./Laboratorio-9/carsDatasets/")
+            comprobarProporcionalidadHoldOut("./Laboratorio-9/carsDatasets/",archivoOriginal="cars.csv",target="Origin")
+        elif opcion == "4":
+            iris = pd.read_csv("./Laboratorio-9/irisDatasets/iris.csv")
+            n_foldsL = 10
+            print(colors.BOLDRED,"//////////////////Conjunto de datos Iris K-Fold: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
+            aplicar_k_fold_estratificado(iris,"./Laboratorio-9/irisDatasets/",n_folds=n_foldsL)
+            comprobarProporcionalidadKfold("./Laboratorio-9/irisDatasets/",archivoOriginal="iris.csv",target="variety",n_folds=n_foldsL)
+        elif opcion == "5":
+            wine = wine = pd.read_csv("./Laboratorio-9/wineDatasets/wine.csv")
+            n_foldsL = 10
+            print(colors.BOLDRED,"//////////////////Conjunto de datos Wine K-Fold: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
+            aplicar_k_fold_estratificado(wine,"./Laboratorio-9/wineDatasets/","Wine",n_folds= n_foldsL)
+            comprobarProporcionalidadKfold("./Laboratorio-9/wineDatasets/",archivoOriginal="wine.csv",target="Wine",n_folds=n_foldsL)
+        elif opcion == "6":
+            cars = pd.read_csv("./Laboratorio-9/carsDatasets/cars.csv")
+            n_foldsL = 10
+            print(colors.BOLDRED,"//////////////////Conjunto de datos Cars K-Fold: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
+            aplicar_k_fold_estratificado(cars,"./Laboratorio-9/carsDatasets/",n_folds= n_foldsL)
+            comprobarProporcionalidadKfold("./Laboratorio-9/carsDatasets/",archivoOriginal="cars.csv",target="Origin",n_folds=n_foldsL)
+        else:
+            print("Opción no válida")
+        #Presionar enter para continuar
+        input("Presione Enter para continuar...")
 
-aplicar_k_fold_estratificado(iris,"./Laboratorio-9/irisDatasets/",n_folds=10)
-aplicar_k_fold_estratificado(wine,"./Laboratorio-9/wineDatasets/",class_column="Wine",n_folds=10)
-aplicar_k_fold_estratificado(cars,"./Laboratorio-9/carsDatasets/",n_folds=10)
-
-
+menu()

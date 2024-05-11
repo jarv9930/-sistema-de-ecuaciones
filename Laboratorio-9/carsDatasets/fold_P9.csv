@@ -1,0 +1,40 @@
+Car,MPG,Cylinders,Displacement,Horsepower,Weight,Acceleration,Model,Origin
+Mercedes-Benz 240d,30.0,4,146.0,67.0,3250.0,21.8,80,Europe
+Triumph TR7 Coupe,35.0,4,122.0,88.0,2500.0,15.1,80,Europe
+Volkswagen Dasher,30.5,4,97.0,78.0,2190.0,14.1,77,Europe
+Fiat 124B,30.0,4,88.0,76.0,2065.0,14.5,71,Europe
+Opel Manta,24.0,4,116.0,75.0,2158.0,15.5,73,Europe
+Renault 12 (sw),26.0,4,96.0,69.0,2189.0,18.0,72,Europe
+Volkswagen Dasher (diesel),43.4,4,90.0,48.0,2335.0,23.7,80,Europe
+Toyota Mark II,19.0,6,156.0,108.0,2930.0,15.5,76,Japan
+Honda Civic CVCC,33.0,4,91.0,53.0,1795.0,17.5,75,Japan
+Mazda RX-4,21.5,3,80.0,110.0,2720.0,13.5,77,Japan
+Toyota Corolla Tercel,38.1,4,89.0,60.0,1968.0,18.8,80,Japan
+Honda Civic,24.0,4,120.0,97.0,2489.0,15.0,74,Japan
+Toyota Corolla,27.5,4,134.0,95.0,2560.0,14.2,78,Japan
+Datsun 710,32.0,4,83.0,61.0,2003.0,19.0,74,Japan
+Pontiac Phoenix,33.5,4,151.0,90.0,2556.0,13.2,79,US
+Pontiac Phoenix,27.0,4,151.0,90.0,2735.0,18.0,82,US
+Ford Galaxie 500,15.0,8,429.0,198.0,4341.0,10.0,70,US
+Dodge Colt m/m,33.5,4,98.0,83.0,2075.0,15.9,77,US
+Plymouth Satellite Sebring,18.0,6,225.0,105.0,3613.0,16.5,74,US
+Chevrolet Malibu Classic (sw),19.2,8,267.0,125.0,3605.0,15.0,79,US
+Ford Fairmont (man),25.1,4,140.0,88.0,2720.0,15.4,78,US
+Chrysler Lebaron Salon,17.6,6,225.0,85.0,3465.0,16.6,81,US
+Dodge Coronet Brougham,16.0,8,318.0,150.0,4190.0,13.0,76,US
+Pontiac Catalina,14.0,8,400.0,175.0,4385.0,12.0,72,US
+AMC Pacer,19.0,6,232.0,90.0,3211.0,17.0,75,US
+Plymouth Valiant Custom,19.0,6,225.0,95.0,3264.0,16.0,75,US
+Oldsmobile Cutlass LS,26.6,8,350.0,105.0,3725.0,19.0,81,US
+Pontiac Catalina,16.0,8,400.0,170.0,4668.0,11.5,75,US
+Ford Mustang Boss 302,0.0,8,302.0,140.0,3353.0,8.0,70,US
+Dodge Colt,28.0,4,90.0,75.0,2125.0,14.5,74,US
+Ford Futura,18.1,8,302.0,139.0,3205.0,11.2,78,US
+Mercury Zephyr,20.8,6,200.0,85.0,3070.0,16.7,78,US
+AMC Matador (sw),14.0,8,304.0,150.0,4257.0,15.5,74,US
+Ford Ranger,28.0,4,120.0,79.0,2625.0,18.6,82,US
+Pontiac Astro,23.0,4,140.0,78.0,2592.0,18.5,75,US
+AMC Hornet,18.0,6,199.0,97.0,2774.0,15.5,70,US
+Dodge Monaco (sw),12.0,8,383.0,180.0,4955.0,11.5,71,US
+Oldsmobile Omega Brougham,26.8,6,173.0,115.0,2700.0,12.9,79,US
+Ford Pinto,18.0,6,171.0,97.0,2984.0,14.5,75,US

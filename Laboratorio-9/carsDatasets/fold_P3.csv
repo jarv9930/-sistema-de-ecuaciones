@@ -1,0 +1,42 @@
+Car,MPG,Cylinders,Displacement,Horsepower,Weight,Acceleration,Model,Origin
+Audi 100 LS,24.0,4,107.0,90.0,2430.0,14.5,70,Europe
+Volkswagen Dasher,25.0,4,90.0,71.0,2223.0,16.5,75,Europe
+Volkswagen Rabbit Custom,29.0,4,97.0,78.0,1940.0,14.5,77,Europe
+Fiat Strada Custom,37.3,4,91.0,69.0,2130.0,14.7,79,Europe
+Opel 1900,28.0,4,116.0,90.0,2123.0,14.0,71,Europe
+Volkswagen 411 (sw),22.0,4,121.0,76.0,2511.0,18.0,72,Europe
+Volkswagen Rabbit,29.0,4,90.0,70.0,1937.0,14.0,75,Europe
+Toyota Corolla 1200,32.0,4,71.0,65.0,1836.0,21.0,74,Japan
+Datsun 310,37.2,4,86.0,65.0,2019.0,16.4,80,Japan
+Datsun 200-SX,23.9,4,119.0,97.0,2405.0,14.9,78,Japan
+Toyota Corolla Mark ii,24.0,4,113.0,95.0,2372.0,15.0,70,Japan
+Toyota Corolla,32.4,4,108.0,75.0,2350.0,16.8,81,Japan
+Toyota Mark II,20.0,6,156.0,122.0,2807.0,13.5,73,Japan
+Toyota Corolla Liftback,26.0,4,97.0,75.0,2265.0,18.2,77,Japan
+Datsun 710,24.0,4,119.0,97.0,2545.0,17.0,75,Japan
+Chevrolet Chevette,29.0,4,85.0,52.0,2035.0,22.2,76,US
+AMC Matador,15.0,6,258.0,110.0,3730.0,19.0,75,US
+Dodge Coronet Custom (sw),14.0,8,318.0,150.0,4457.0,13.5,74,US
+Chevrolet Cavalier 2-door,34.0,4,112.0,88.0,2395.0,18.0,82,US
+Chevrolet Chevette,30.5,4,98.0,63.0,2051.0,17.0,77,US
+Chevrolet Caprice Classic,13.0,8,400.0,150.0,4464.0,12.0,73,US
+Chrysler Cordoba,15.5,8,400.0,190.0,4325.0,12.2,77,US
+Chevrolet Caprice Classic,17.5,8,305.0,145.0,3880.0,12.5,77,US
+Chevrolet Nova,15.0,6,250.0,100.0,3336.0,17.0,74,US
+Chevrolet Chevelle Malibu Classic,17.5,8,305.0,140.0,4215.0,13.0,76,US
+Plymouth Fury Gran Sedan,14.0,8,318.0,150.0,4237.0,14.5,73,US
+Ford Fairmont Futura,24.0,4,140.0,92.0,2865.0,16.4,82,US
+Chevrolet Vega,25.0,4,140.0,75.0,2542.0,17.0,74,US
+AMC Rebel SST,16.0,8,304.0,150.0,3433.0,12.0,70,US
+Plymouth Valiant,18.0,6,225.0,105.0,3121.0,16.5,73,US
+Chevrolet Chevelle Malibu,18.0,8,307.0,130.0,3504.0,12.0,70,US
+Chevrolet Vega 2300,28.0,4,140.0,90.0,2264.0,15.5,71,US
+Plymouth Fury iii,14.0,8,440.0,215.0,4312.0,8.5,70,US
+Mercury Marquis,11.0,8,429.0,208.0,4633.0,11.0,72,US
+Ford Fairmont,26.4,4,140.0,88.0,2870.0,18.1,80,US
+Dodge Colt,26.0,4,98.0,79.0,2255.0,17.7,76,US
+Chevrolet Vega,21.0,4,140.0,72.0,2401.0,19.5,73,US
+Dodge Coronet Custom,15.0,8,318.0,150.0,3777.0,12.5,73,US
+Ford Torino (sw),0.0,8,351.0,153.0,4034.0,11.0,70,US
+Ford LTD,13.0,8,351.0,158.0,4363.0,13.0,73,US
+Chevrolet Malibu,13.0,8,350.0,145.0,3988.0,13.0,73,US

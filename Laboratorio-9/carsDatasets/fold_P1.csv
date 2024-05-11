@@ -1,0 +1,43 @@
+Car,MPG,Cylinders,Displacement,Horsepower,Weight,Acceleration,Model,Origin
+Fiat 124 Sport Coupe,26.0,4,98.0,90.0,2265.0,15.5,73,Europe
+Saab 99gle,21.6,4,121.0,115.0,2795.0,15.7,78,Europe
+Peugeot 505s Turbo Diesel,28.1,4,141.0,80.0,3230.0,20.4,81,Europe
+Audi Fox,29.0,4,98.0,83.0,2219.0,16.5,74,Europe
+Volvo Diesel,30.7,6,145.0,76.0,3160.0,19.6,81,Europe
+Volkswagen Type 3,23.0,4,97.0,54.0,2254.0,23.5,72,Europe
+Volvo 264gl,17.0,6,163.0,125.0,3140.0,13.6,78,Europe
+Audi 100LS,20.0,4,114.0,91.0,2582.0,14.0,73,Europe
+Datsun PL510,27.0,4,97.0,88.0,2130.0,14.5,70,Japan
+Mazda GLC Custom l,37.0,4,91.0,68.0,2025.0,18.2,82,Japan
+Toyota Cressida,25.4,6,168.0,116.0,2900.0,12.6,81,Japan
+Datsun 310 GX,38.0,4,91.0,67.0,1995.0,16.2,82,Japan
+Mazda RX3,18.0,3,70.0,90.0,2124.0,13.5,73,Japan
+Datsun 210 MPG,37.0,4,85.0,65.0,1975.0,19.4,81,Japan
+Datsun 210,40.8,4,85.0,65.0,2110.0,19.2,80,Japan
+Subaru,32.3,4,97.0,67.0,2065.0,17.8,81,Japan
+AMC Pacer d/l,17.5,6,258.0,95.0,3193.0,17.8,76,US
+Cadillac Seville,16.5,8,350.0,180.0,4380.0,12.1,76,US
+Chevrolet Chevelle Malibu Classic,16.0,6,250.0,100.0,3781.0,17.0,74,US
+Plymouth Grand Fury,16.0,8,318.0,150.0,4498.0,14.5,75,US
+Ford F108,13.0,8,302.0,130.0,3870.0,15.0,76,US
+Ford Pinto,23.0,4,140.0,83.0,2639.0,17.0,75,US
+Dodge Aspen SE,20.0,6,225.0,100.0,3651.0,17.7,76,US
+Ford Maverick,18.0,6,250.0,88.0,3021.0,16.5,73,US
+AMC Hornet,22.5,6,232.0,90.0,3085.0,17.6,76,US
+Buick Century 350,13.0,8,350.0,175.0,4100.0,13.0,73,US
+Ford Galaxie 500,14.0,8,351.0,153.0,4129.0,13.0,72,US
+Ford Country Squire (sw),13.0,8,400.0,170.0,4746.0,12.0,71,US
+Chevy S-10,31.0,4,119.0,82.0,2720.0,19.4,82,US
+Pontiac Sunbird Coupe,24.5,4,151.0,88.0,2740.0,16.0,77,US
+Dodge Dart Custom,15.0,8,318.0,150.0,3399.0,11.0,73,US
+Dodge Magnum XE,17.5,8,318.0,140.0,4080.0,13.7,78,US
+Plymouth Satellite,18.0,8,318.0,150.0,3436.0,11.0,70,US
+Buick Century,17.0,6,231.0,110.0,3907.0,21.0,75,US
+Ford Thunderbird,16.0,8,351.0,149.0,4335.0,14.5,77,US
+Oldsmobile Starfire SX,23.8,4,151.0,85.0,2855.0,17.6,78,US
+Oldsmobile Vista Cruiser,12.0,8,350.0,180.0,4499.0,12.5,73,US
+Ford Torino 500,19.0,6,250.0,88.0,3302.0,15.5,71,US
+AMC Ambassador Brougham,13.0,8,360.0,175.0,3821.0,11.0,73,US
+Buick Estate Wagon (sw),16.9,8,350.0,155.0,4360.0,14.9,79,US
+Plymouth Reliant,30.0,4,135.0,84.0,2385.0,12.9,81,US
+AMC Matador,16.0,6,258.0,110.0,3632.0,18.0,74,US
