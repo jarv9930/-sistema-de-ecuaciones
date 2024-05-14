@@ -24,10 +24,7 @@ for cls in clases_entrenamiento:
     datos_clase = dataset_train[dataset_train["variety"] == cls].drop(columns="variety").values
     #Calcular numero de patrones de la clase actual
     n = len(datos_clase)
-    sumatoria = 0
-    for i in range(n+1):
-        sumatoria += datos_clase**(i+1)
-    print("Sumatoria de la clase ", cls, ": ", sumatoria)     
+    sumatoria = 0  
         
 
 #Se calculara la media por cada columna de nuestro conjunto de entrenamiento,
