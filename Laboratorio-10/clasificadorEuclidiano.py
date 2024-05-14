@@ -3,15 +3,15 @@ import pandas as pd
 import numpy as np
 
 #Cargar el dataset de Iris
-dataset = pd.read_csv("./Laboratorio-10/irisDataset/iris.csv")
+dataset = pd.read_csv("./irisDataset/iris.csv")
 
 #Aplicar Hold out 70/30 estratificado al dataset de Iris
-mvi.MetodosValidacion.aplicar_hold_out_70_30_estratificado(dataset,"./Laboratorio-10/irisDataset/")
+mvi.MetodosValidacion.aplicar_hold_out_70_30_estratificado(dataset,"./irisDataset/")
 
 
 #Fase de aprendizaje
 #Cargar el conjunto de entrenamiento
-dataset_train = pd.read_csv("./Laboratorio-10/irisDataset/entrenamiento.csv")
+dataset_train = pd.read_csv("./irisDataset/entrenamiento.csv ")
 #Obtener las clases unicas conjunto de entrenamiento
 clases_entrenamiento = dataset_train["variety"].unique()
 print("Clases de entrenamiento: ", clases_entrenamiento)
@@ -31,4 +31,4 @@ for cls in clases_entrenamiento:
         
 
 #Se calculara la media por cada columna de nuestro conjunto de entrenamiento,
-# el vector promedio sera un vector de 4 caracteristicas
+# el vector promedio sera un vector de 4
