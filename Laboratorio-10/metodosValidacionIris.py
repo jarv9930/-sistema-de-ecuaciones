@@ -69,7 +69,7 @@ class MetodosValidacion:
             dataset_test = pd.DataFrame(dataset_hold_out[1],columns=columnas)
             dataset_test[class_column] = dataset_hold_out[3]
             dataset_test.to_csv(carpeta+"prueba.csv", index=False)
-    def k_fold_estratificado(self,X, y, n_folds=10):
+    def k_fold_estratificado(X, y, n_folds=10):
         #Identificar clases únicas
         unique_classes = np.unique(y)
         #print("Clases únicas: ", unique_classes)
@@ -104,6 +104,8 @@ class MetodosValidacion:
                 #Obtenemos los datos X y las clases Y del dataset
                 X = dataset[columnas].to_numpy()
                 y = dataset[class_column].values
+            #print("X: ", X)
+            #print("y: ", y)
             #Aplicamos K-Fold estratificado
             dataset_k_fold = MetodosValidacion.k_fold_estratificado(X, y, n_folds)
 
