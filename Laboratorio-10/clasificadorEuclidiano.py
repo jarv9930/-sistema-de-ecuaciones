@@ -121,7 +121,7 @@ def clasificadorEuclidianoHoldOut(dataset,carpeta,target):
     #print("Dataset de prueba: ", dataset_test)
     vectores_promedio,vector_clase = faseDeAprendizaje(dataset_train,target)
     eficiencia = faseDeClasificacion(dataset_test,vectores_promedio,target,vector_clase)
-    print("Eficiencia del clasificador: ", eficiencia)
+    print("Eficiencia del clasificador: ", eficiencia*100, '%')
     
 def clasificadorEuclidianoKFold(dataset,carpeta,target, k):
     #Eliminar las columnas que no sean numeros flotantes o entero, manteniendo la columna target
@@ -142,9 +142,9 @@ def clasificadorEuclidianoKFold(dataset,carpeta,target, k):
         vectores_promedio,vector_clase = faseDeAprendizaje(dataset_train,target)
         eficiencia = faseDeClasificacion(dataset_test,vectores_promedio,target,vector_clase)
         eficiencias.append(eficiencia)
-        print("Eficiencia del fold ", i+1, ": ", eficiencia)
+        print("Eficiencia del fold ", i+1, ": ", eficiencia*100, '%')
     eficiencia_media = np.mean(eficiencias)
-    print(colors.BOLDRED,"Eficiencia media: ", eficiencia_media, colors.RESET)
+    print(colors.BOLDRED,"Eficiencia media: ", eficiencia_media *100,'%', colors.RESET)
 
 
 def menu_dataset():
