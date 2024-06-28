@@ -69,6 +69,8 @@ if __name__ == "__main__":
 
     resultado.append(estado_inicial)
     resultado.reverse()
+    print("Estado Inicial: ",estado_inicial)
+    print("Estado objetivo: ",solucion)
     print(resultado)
 
 ##LOS RESULTADOS DE LA EJECUCION NOS MUESTRAN QUE EL ALGORITMO BFS TARDA MENOS TIEMPO EN EJECUTARSE QUE EL ALGORIZMO DFS,

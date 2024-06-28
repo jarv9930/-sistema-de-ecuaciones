@@ -1,7 +1,7 @@
 import pandas as pd 
 from ydata_profiling import ProfileReport
 
-df = pd.read_csv("./Laboratorio-7/bezdekIris.csv")
+df = pd.read_csv("./bezdekIris.csv")
 profile = ProfileReport(df, title="Pandas Profiling Report")
 profile.to_file("./Laboratorio-7/reporte.html")
 print("************************************")

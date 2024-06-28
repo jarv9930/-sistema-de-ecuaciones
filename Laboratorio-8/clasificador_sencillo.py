@@ -1,6 +1,6 @@
 import pandas as pd 
 
-df = pd.read_csv("./Laboratorio-8/train.csv")
+df = pd.read_csv("./train.csv")
 
 # Calcular la media de los valores de longitud de petalo para iris setosa
 mediaSetosaL = df[df["class"] == "Iris-setosa"].iloc[:, 0].mean()
@@ -57,7 +57,7 @@ desviacionVirginicaA = df[df["class"] == "Iris-virginica"].iloc[:, 1].std()
 print("Desviacion Virginica Ancho: ", desviacionVirginicaA)
 
 
-df2 = pd.read_csv("./Laboratorio-8/test.csv")
+df2 = pd.read_csv("./test.csv")
 
 #Clasificar los valores de archivo text considerando los resulados de la media de los valores de longitud de petalo
 print("------------CLASIFICACION POR LONGITUD DE PETALO-----------------")

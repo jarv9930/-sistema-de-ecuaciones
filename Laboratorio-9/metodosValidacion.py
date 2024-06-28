@@ -280,41 +280,42 @@ def menu():
         if opcion == "0":
             break
         if opcion == "1":
-            iris = pd.read_csv("./Laboratorio-9/irisDatasets/iris.csv")
+            iris = pd.read_csv("./irisDatasets/iris.csv")
             print(colors.BOLDRED,"//////////////////Conjunto de datos Iris Hold Out 70/30: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
-            aplicar_hold_out_70_30_estratificado(iris,"./Laboratorio-9/irisDatasets/")
-            comprobarProporcionalidadHoldOut("./Laboratorio-9/irisDatasets/",archivoOriginal="iris.csv",target="variety")
+            aplicar_hold_out_70_30_estratificado(iris,"./irisDatasets/")
+            comprobarProporcionalidadHoldOut("./irisDatasets/",archivoOriginal="iris.csv",target="variety")
         elif opcion == "2":
-            wine = wine = pd.read_csv("./Laboratorio-9/wineDatasets/wine.csv")
+            wine = wine = pd.read_csv("./wineDatasets/wine.csv")
             print(colors.BOLDRED,"//////////////////Conjunto de datos Wine Hold Out 70/30: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
-            aplicar_hold_out_70_30_estratificado(wine,"./Laboratorio-9/wineDatasets/","Wine")
-            comprobarProporcionalidadHoldOut("./Laboratorio-9/wineDatasets/",archivoOriginal="wine.csv",target="Wine")
+            aplicar_hold_out_70_30_estratificado(wine,"./wineDatasets/","Wine")
+            comprobarProporcionalidadHoldOut("./wineDatasets/",archivoOriginal="wine.csv",target="Wine")
         elif opcion == "3":
-            cars = pd.read_csv("./Laboratorio-9/carsDatasets/cars.csv")
+            cars = pd.read_csv("./carsDatasets/cars.csv")
             print(colors.BOLDRED,"//////////////////Conjunto de datos Cars Hold Out 70/30: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
-            aplicar_hold_out_70_30_estratificado(cars,"./Laboratorio-9/carsDatasets/")
-            comprobarProporcionalidadHoldOut("./Laboratorio-9/carsDatasets/",archivoOriginal="cars.csv",target="Origin")
+            aplicar_hold_out_70_30_estratificado(cars,"./carsDatasets/")
+            comprobarProporcionalidadHoldOut("./carsDatasets/",archivoOriginal="cars.csv",target="Origin")
         elif opcion == "4":
-            iris = pd.read_csv("./Laboratorio-9/irisDatasets/iris.csv")
+            iris = pd.read_csv("./irisDatasets/iris.csv")
             n_foldsL = 10
             print(colors.BOLDRED,"//////////////////Conjunto de datos Iris K-Fold: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
-            aplicar_k_fold_estratificado(iris,"./Laboratorio-9/irisDatasets/",n_folds=n_foldsL)
-            comprobarProporcionalidadKfold("./Laboratorio-9/irisDatasets/",archivoOriginal="iris.csv",target="variety",n_folds=n_foldsL)
+            aplicar_k_fold_estratificado(iris,"./irisDatasets/",n_folds=n_foldsL)
+            comprobarProporcionalidadKfold("./irisDatasets/",archivoOriginal="iris.csv",target="variety",n_folds=n_foldsL)
         elif opcion == "5":
-            wine = wine = pd.read_csv("./Laboratorio-9/wineDatasets/wine.csv")
+            wine = wine = pd.read_csv(".//wineDatasets/wine.csv")
             n_foldsL = 10
             print(colors.BOLDRED,"//////////////////Conjunto de datos Wine K-Fold: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
-            aplicar_k_fold_estratificado(wine,"./Laboratorio-9/wineDatasets/","Wine",n_folds= n_foldsL)
-            comprobarProporcionalidadKfold("./Laboratorio-9/wineDatasets/",archivoOriginal="wine.csv",target="Wine",n_folds=n_foldsL)
+            aplicar_k_fold_estratificado(wine,"./wineDatasets/","Wine",n_folds= n_foldsL)
+            comprobarProporcionalidadKfold("./wineDatasets/",archivoOriginal="wine.csv",target="Wine",n_folds=n_foldsL)
         elif opcion == "6":
-            cars = pd.read_csv("./Laboratorio-9/carsDatasets/cars.csv")
+            cars = pd.read_csv("./carsDatasets/cars.csv")
             n_foldsL = 10
             print(colors.BOLDRED,"//////////////////Conjunto de datos Cars K-Fold: \\\\\\\\\\\\\\\\\\\\\\",colors.RESET)
-            aplicar_k_fold_estratificado(cars,"./Laboratorio-9/carsDatasets/",n_folds= n_foldsL)
-            comprobarProporcionalidadKfold("./Laboratorio-9/carsDatasets/",archivoOriginal="cars.csv",target="Origin",n_folds=n_foldsL)
+            aplicar_k_fold_estratificado(cars,"./carsDatasets/",n_folds= n_foldsL)
+            comprobarProporcionalidadKfold("./carsDatasets/",archivoOriginal="cars.csv",target="Origin",n_folds=n_foldsL)
         else:
             print("Opción no válida")
-        #Presionar enter para continuar
+        #Presionar enter para continuar11
+
         input("Presione Enter para continuar...")
 
 menu()

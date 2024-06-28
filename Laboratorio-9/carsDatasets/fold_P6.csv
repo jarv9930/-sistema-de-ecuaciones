@@ -1,41 +1,41 @@
 Car,MPG,Cylinders,Displacement,Horsepower,Weight,Acceleration,Model,Origin
-Mercedes Benz 300d,25.4,5,183.0,77.0,3530.0,20.1,79,Europe
-BMW 2002,26.0,4,121.0,113.0,2234.0,12.5,70,Europe
 Saab 99le,24.0,4,121.0,110.0,2660.0,14.0,73,Europe
-Renault 5 GTL,36.0,4,79.0,58.0,1825.0,18.6,77,Europe
-Volkswagen Super Beetle 117,0.0,4,97.0,48.0,1978.0,20.0,71,Europe
-Volkswagen Rabbit,41.5,4,98.0,76.0,2144.0,14.7,80,Europe
-Fiat 131,28.0,4,107.0,86.0,2464.0,15.5,76,Europe
-Honda Civic,38.0,4,91.0,67.0,1965.0,15.0,82,Japan
-Datsun 810 Maxima,24.2,6,146.0,120.0,2930.0,13.8,81,Japan
-Mazda GLC Deluxe,34.1,4,86.0,65.0,1975.0,15.2,79,Japan
-Datsun 280-ZX,32.7,6,168.0,132.0,2910.0,11.4,80,Japan
-Subaru DL,33.8,4,97.0,67.0,2145.0,18.0,80,Japan
-Toyota Corolla,25.0,4,113.0,95.0,2228.0,14.0,71,Japan
-Honda Prelude,33.7,4,107.0,75.0,2210.0,14.4,81,Japan
-Nissan Stanza XE,36.0,4,120.0,88.0,2160.0,14.5,82,Japan
-Dodge Aries Wagon (sw),25.8,4,156.0,92.0,2620.0,14.4,81,US
-Mercury Capri 2000,23.0,4,122.0,86.0,2220.0,14.0,71,US
-Dodge St. Regis,18.2,8,318.0,135.0,3830.0,15.2,79,US
-Chevy C20,10.0,8,307.0,200.0,4376.0,15.0,70,US
-Plymouth Sapporo,23.2,4,156.0,105.0,2745.0,16.7,78,US
-AMC Rebel SST (sw),0.0,8,360.0,175.0,3850.0,11.0,70,US
-Chevrolet C10,13.0,8,350.0,145.0,4055.0,12.0,76,US
-Plymouth Horizon 4,34.7,4,105.0,63.0,2215.0,14.9,81,US
+Volkswagen Jetta,33.0,4,105.0,74.0,2190.0,14.2,81,Europe
+Volkswagen Dasher (diesel),43.4,4,90.0,48.0,2335.0,23.7,80,Europe
+Opel Manta,26.0,4,97.0,78.0,2300.0,14.5,74,Europe
+Volvo 144ea,19.0,4,121.0,112.0,2868.0,15.5,73,Europe
+Volkswagen Rabbit Custom,31.9,4,89.0,71.0,1925.0,14.0,79,Europe
+Volvo 244DL,22.0,4,121.0,98.0,2945.0,14.5,75,Europe
+Toyota Corolla,32.2,4,108.0,75.0,2265.0,15.2,80,Japan
+Subaru DL,30.0,4,97.0,67.0,1985.0,16.4,77,Japan
+Datsun 710,32.0,4,83.0,61.0,2003.0,19.0,74,Japan
+Datsun PL510,27.0,4,97.0,88.0,2130.0,14.5,71,Japan
+Datsun 1200,35.0,4,72.0,69.0,1613.0,18.0,71,Japan
+Toyota Corolla,29.0,4,97.0,75.0,2171.0,16.0,75,Japan
+Toyota Corolla,27.5,4,134.0,95.0,2560.0,14.2,78,Japan
+Mazda RX-4,21.5,3,80.0,110.0,2720.0,13.5,77,Japan
+Dodge Coronet Custom,15.0,8,318.0,150.0,3777.0,12.5,73,US
+Ford Maverick,24.0,6,200.0,81.0,3012.0,17.6,76,US
+Dodge Magnum XE,17.5,8,318.0,140.0,4080.0,13.7,78,US
+Pontiac Astro,23.0,4,140.0,78.0,2592.0,18.5,75,US
 Chevrolet Chevelle Malibu,17.0,6,250.0,100.0,3329.0,15.5,71,US
-Mercury Monarch,15.0,6,250.0,72.0,3432.0,21.0,75,US
-Ford Maverick,21.0,6,200.0,0.0,2875.0,17.0,74,US
-Mercury Lynx l,36.0,4,98.0,70.0,2125.0,17.3,82,US
-Ford Country,12.0,8,400.0,167.0,4906.0,12.5,73,US
-AMC Hornet,18.0,6,232.0,100.0,2945.0,16.0,73,US
-Chevrolet Impala,14.0,8,454.0,220.0,4354.0,9.0,70,US
-Dodge Colt Hatchback Custom,35.7,4,98.0,80.0,1915.0,14.4,79,US
-Chevrolet Cavalier,28.0,4,112.0,88.0,2605.0,19.6,82,US
-Ford Maverick,15.0,6,250.0,72.0,3158.0,19.5,75,US
+Ford Fairmont Futura,24.0,4,140.0,92.0,2865.0,16.4,82,US
+AMC Rebel SST (sw),0.0,8,360.0,175.0,3850.0,11.0,70,US
+AMC Rebel SST,16.0,8,304.0,150.0,3433.0,12.0,70,US
+Chevrolet Concours,17.5,6,250.0,110.0,3520.0,16.4,77,US
 Ford Grenada l,22.0,6,232.0,112.0,2835.0,14.7,82,US
-Plymouth Reliant,27.2,4,135.0,84.0,2490.0,15.7,81,US
-Plymouth Satellite (sw),0.0,8,383.0,175.0,4166.0,10.5,70,US
-Oldsmobile Cutlass Salon Brougham,23.9,8,260.0,90.0,3420.0,22.2,79,US
-Dodge Aspen 6,20.6,6,225.0,110.0,3360.0,16.6,79,US
-Ford Mustang,18.0,6,250.0,88.0,3139.0,14.5,71,US
-Ford Pinto,26.5,4,140.0,72.0,2565.0,13.6,76,US
+Ford LTD,13.0,8,351.0,158.0,4363.0,13.0,73,US
+Ford Maverick,21.0,6,200.0,0.0,2875.0,17.0,74,US
+Chrysler Newport Royal,13.0,8,400.0,190.0,4422.0,12.5,72,US
+Dodge Coronet Custom (sw),14.0,8,318.0,150.0,4457.0,13.5,74,US
+Oldsmobile Cutlass Supreme,17.0,8,260.0,110.0,4060.0,19.0,77,US
+Chevrolet Monte Carlo Landau,15.5,8,350.0,170.0,4165.0,11.4,77,US
+Ford Thunderbird,16.0,8,351.0,149.0,4335.0,14.5,77,US
+Mercury Marquis,11.0,8,429.0,208.0,4633.0,11.0,72,US
+Chevrolet Impala,13.0,8,350.0,165.0,4274.0,12.0,72,US
+Chevrolet Cavalier,28.0,4,112.0,88.0,2605.0,19.6,82,US
+Chevrolet Vega,20.0,4,140.0,90.0,2408.0,19.5,72,US
+Pontiac Phoenix,27.0,4,151.0,90.0,2735.0,18.0,82,US
+Buick Century,22.4,6,231.0,110.0,3415.0,15.8,81,US
+Mercury Zephyr,20.8,6,200.0,85.0,3070.0,16.7,78,US
+Ford Pinto,23.0,4,140.0,83.0,2639.0,17.0,75,US
